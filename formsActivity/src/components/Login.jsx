@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import * as yup from 'yup';
+import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 export default function Login() {
+    const navigate = useNavigate();
+
     const [loginError, setLoginError] = useState(null);
     const registeredUser = JSON.parse(localStorage.getItem('registeredUser'));
 
@@ -37,6 +40,7 @@ export default function Login() {
         setLoginError(null);
         console.log("Login successful!");
         console.log("User:", registeredUser);
+        navigate('/home');
     }
 
     return (

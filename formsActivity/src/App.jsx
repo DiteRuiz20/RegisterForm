@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-route
 import './App.css'
 import Form from './components/Form'
 import Login from './components/Login'
+import Home from './components/Home'
 
-function Home() {
+function Register() {
   const navigate = useNavigate();
 
   return (
@@ -18,8 +19,9 @@ function App() {
   return (
       <Router>
           <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<Register />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/home" element={<Home />} />
           </Routes>
       </Router>
   );
