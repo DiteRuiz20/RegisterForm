@@ -2,8 +2,10 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useNavigate } from 'react-router-dom';
 
 export default function RegistrationForm() {
+    const navigate = useNavigate();
 
     const schema = yup.object().shape({
         name: yup.string()
@@ -32,7 +34,11 @@ export default function RegistrationForm() {
     });
 
     function onSubmit(data) {
+        localStorage.setItem('registeredUser', JSON.stringify(data));
         console.log("Form Submitted:", data);
+        navigate('/login');
+        console.log("Form Errors:", errors);
+        console.log("Name:", data.name);
     }
 
     return (
